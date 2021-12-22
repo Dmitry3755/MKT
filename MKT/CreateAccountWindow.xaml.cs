@@ -12,18 +12,21 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Security.Cryptography;
-
+using BLL.Interfaces;
+using BLL;
 
 namespace MKT
 {
     /// <summary>
     /// Логика взаимодействия для Window1.xaml
     /// </summary>
-    public partial class Window1 : Window
+    public partial class CreateAccountWindow : Window
     {
-        public PCShopContext dbcontext = new PCShopContext();
-        public Window1()
+        IAuthorizationService authorizationService;
+
+        public CreateAccountWindow(IAuthorizationService service)
         {
+            authorizationService = service;
             InitializeComponent();
             double screenHeight = SystemParameters.FullPrimaryScreenHeight;
             double screenWidth = SystemParameters.FullPrimaryScreenWidth;
@@ -36,12 +39,13 @@ namespace MKT
         {
             string hash;
             hash = Hash(passwordBox.Password.ToString());
-           
-            Users users = new Users();
-            users.user_login = loginTextBox.Text;
-            users.user_password = hash;
-            dbcontext.Users.Add(users);
-            dbcontext.SaveChanges();
+
+            UsersModel usersModel = new UsersModel();
+            usersModel.user_login = loginTextBox.Text;
+            usersModel.user_password = hash;
+            usersModel.user_id = authorizationService.GetUsersList().Count;
+            authorizationService.AddAccount(usersModel);
+
             MainWindow main = new MainWindow();
             main.Show();
             this.Close();

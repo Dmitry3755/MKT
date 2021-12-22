@@ -1,4 +1,4 @@
-namespace MKT
+namespace DAL
 {
     using System;
     using System.Collections.Generic;
@@ -6,24 +6,23 @@ namespace MKT
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("Cheque")]
-    public partial class Cheque
+    public partial class Roles
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Cheque()
+        public Roles()
         {
-            Information_about_sales = new HashSet<Information_about_sales>();
+            Users_roles = new HashSet<Users_roles>();
         }
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int cheque_id { get; set; }
+        public int role_id { get; set; }
 
         [Required]
         [StringLength(50)]
-        public string cheque_number { get; set; }
+        public string role_name { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Information_about_sales> Information_about_sales { get; set; }
+        public virtual ICollection<Users_roles> Users_roles { get; set; }
     }
 }

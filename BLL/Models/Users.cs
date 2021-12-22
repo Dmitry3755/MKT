@@ -1,4 +1,11 @@
-namespace MKT
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using DAL;
+
+namespace BLL
 {
     using System;
     using System.Collections.Generic;
@@ -6,31 +13,34 @@ namespace MKT
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class Physical_person
+    public partial class UsersModel
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Physical_person()
+        public UsersModel()
         {
-            Supplier = new HashSet<Supplier>();
+            Users_roles = new HashSet<Users_roles>();
         }
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int physical_person_id { get; set; }
-
-        [Required]
-        [StringLength(100)]
-        public string physical_person_name { get; set; }
+        public int user_id { get; set; }
 
         [Required]
         [StringLength(50)]
-        public string physical_person_pasport_number { get; set; }
+        public string user_login { get; set; }
 
         [Required]
         [StringLength(50)]
-        public string physical_person_TIN { get; set; }
+        public string user_password { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Supplier> Supplier { get; set; }
+        public virtual ICollection<Users_roles> Users_roles { get; set; }
+
+        public UsersModel(Users users)
+        {
+            user_id = users.user_id;
+            user_login = users.user_login;
+            user_password = user_password;
+        }
     }
 }

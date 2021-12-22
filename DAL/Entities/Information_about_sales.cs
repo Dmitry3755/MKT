@@ -1,4 +1,4 @@
-namespace MKT
+namespace DAL
 {
     using System;
     using System.Collections.Generic;
@@ -19,13 +19,7 @@ namespace MKT
 
         public DateTime sales_date { get; set; }
 
-        public double sales_discount { get; set; }
-
         public int product_FK { get; set; }
-
-        public int cheque_FK { get; set; }
-
-        public virtual Cheque Cheque { get; set; }
 
         public virtual Products Products { get; set; }
     }

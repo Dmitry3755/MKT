@@ -1,4 +1,4 @@
-namespace MKT
+namespace DAL
 {
     using System;
     using System.Collections.Generic;
@@ -8,12 +8,6 @@ namespace MKT
 
     public partial class Legal_person
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Legal_person()
-        {
-            Supplier = new HashSet<Supplier>();
-        }
-
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int legal_person_id { get; set; }
@@ -29,8 +23,5 @@ namespace MKT
         [Required]
         [StringLength(50)]
         public string Legal_person_MSRN { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Supplier> Supplier { get; set; }
     }
 }

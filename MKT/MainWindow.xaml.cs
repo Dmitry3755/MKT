@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BLL.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,11 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Configuration;
+using Ninject;
+using Ninject.Modules;
+using BLL;
+using MKT.Util;
 
 namespace MKT
 {
@@ -20,8 +26,15 @@ namespace MKT
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        IAuthorizationService authorizationService;
+
         public MainWindow()
         {
+            string connection = ConfigurationManager.ConnectionStrings["PcshopContext"].ConnectionString;
+            var kernel = new StandardKernel(new NinjectRegistrations(), new ServiceModule(connection));
+            authorizationService = kernel.Get<IAuthorizationService>();
+
             InitializeComponent();
             double screenHeight = SystemParameters.FullPrimaryScreenHeight;
             double screenWidth = SystemParameters.FullPrimaryScreenWidth;
@@ -42,8 +55,8 @@ namespace MKT
 
         private void Create_Click(object sender, RoutedEventArgs e)
         {
-            Window1 window1 = new Window1();
-            window1.Show();
+            CreateAccountWindow createAccountWindow = new CreateAccountWindow(authorizationService);
+            createAccountWindow.Show();
             this.Close();    
         }
     }

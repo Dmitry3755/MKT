@@ -1,4 +1,4 @@
-namespace MKT
+namespace DAL
 {
     using System;
     using System.Collections.Generic;
@@ -31,6 +31,8 @@ namespace MKT
 
         [Column(TypeName = "money")]
         public decimal product_price { get; set; }
+
+        public double? discount { get; set; }
 
         public int category_FK { get; set; }
 
