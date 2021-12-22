@@ -28,6 +28,34 @@ namespace DAL.Repository
             return db.Users.ToList();
         }
 
+        public bool isUserEmailExists(string userEmail)
+        {
+
+            //if (db.Users.Select(i => i.user_login.Equals(userEmail)).ToList().Count == 0)
+            try
+            {
+                db.Users.First(i => i.user_login.Equals(userEmail));
+                return true;
+            }
+            catch (InvalidOperationException ex)
+            {
+                return false;
+            }
+        }
+
+        public bool isLoginDataValid(string userPassword, string userEmail)
+        {
+
+            if (db.Users.Single(i => i.user_login == userEmail).user_password == userPassword)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         public void Save()
         {
             db.SaveChanges();

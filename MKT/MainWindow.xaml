@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="МКТ" Height="350" Width="600" Icon="Снимок1.PNG" OpacityMask="Black">
+        Title="МКТ" Height="350" Width="600" Icon="Снимок1.PNG" OpacityMask="Black" Background="#FF04081F">
     <Window.Resources>
         <Style TargetType="{x:Type Button}">
             <Setter Property="FontSize" Value="16" />
@@ -32,9 +32,11 @@
             </Setter>
         </Style>
     </Window.Resources>
+    <Viewbox>
     <Grid Background="#FF04081F" OpacityMask="Black">
-        <Button x:Name="Enter" Content="Войти в систему" Margin="221,91,221,0" VerticalAlignment="Top" Height="25" Click="button_Click_1"/>
-        <Button x:Name="Exit" Content="Выйти" Margin="221,221,221,0" VerticalAlignment="Top" Height="25" Click="button1_Click"/>
-        <Button x:Name="Create" Content="Создать аккаунт" Margin="221,161,221,0" Click="Create_Click" Height="23" VerticalAlignment="Top"/>
+            <Button x:Name="enterButton" Content="Войти в систему" Margin="221,73,221,221" Click="enterButtonClick"/>
+            <Button x:Name="exitButton" Content="Выйти" Margin="221,221,221,73" Click="exitButtonClick"/>
+            <Button x:Name="createButton" Content="Создать аккаунт" Margin="221,148, 221, 148" Click="createButtonClick"/>
     </Grid>
+    </Viewbox>
 </Window>

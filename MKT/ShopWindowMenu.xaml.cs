@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace MKT
 {
     /// <summary>
-    /// Логика взаимодействия для Entry_window.xaml
+    /// Логика взаимодействия для ShopWindowMenu.xaml
     /// </summary>
-    public partial class EntryWindow : Window
+    public partial class ShopWindowMenu : Window
     {
-        public EntryWindow()
+        public ShopWindowMenu()
         {
             InitializeComponent();
             double screenHeight = SystemParameters.FullPrimaryScreenHeight;
@@ -28,9 +28,24 @@ namespace MKT
             this.Left = (screenWidth - this.Width) / 2.0;
         }
 
-        private void entranceButton_Click(object sender, RoutedEventArgs e)
+        private void cashRegisterButtonClick(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void queryButtonClick(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void filterButtonClick(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void exitButtonClick(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

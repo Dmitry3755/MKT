@@ -9,7 +9,9 @@ namespace DAL.Interfaces
     public interface IAuthorizationRepository
     {
        void AddAccount(Users users);
-        List<Users> GetList();
+       List<Users> GetList();
+       bool isUserEmailExists(string userEmail);
+       bool isLoginDataValid(string userPassword, string userEmail);
        void Save();
     }
 }

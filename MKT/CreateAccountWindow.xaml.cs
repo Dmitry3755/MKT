@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using System.Security.Cryptography;
 using BLL.Interfaces;
 using BLL;
+using System.Text.RegularExpressions;
 
 namespace MKT
 {
@@ -23,33 +24,83 @@ namespace MKT
     public partial class CreateAccountWindow : Window
     {
         IAuthorizationService authorizationService;
-
-        public CreateAccountWindow(IAuthorizationService service)
+        bool isRegistration;
+        public CreateAccountWindow(IAuthorizationService service, bool isRegistration)
         {
             authorizationService = service;
+            this.isRegistration = isRegistration;
             InitializeComponent();
+
+            if (!isRegistration)
+            {
+                createButton.Content = "Войти";
+            }
+
             double screenHeight = SystemParameters.FullPrimaryScreenHeight;
             double screenWidth = SystemParameters.FullPrimaryScreenWidth;
             this.Top = (screenHeight - this.Height) / 2.0;
             this.Left = (screenWidth - this.Width) / 2.0;
-            
+
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
+        private void createButtonClick(object sender, RoutedEventArgs e)
         {
-            string hash;
-            hash = Hash(passwordBox.Password.ToString());
-
             UsersModel usersModel = new UsersModel();
+            string hash;
+            Regex regex = new Regex(@"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$");
+           
+            if (loginTextBox.Text == "")
+            {
+                MessageBox.Show("Вы не ввели логин");
+                return;
+            }
+            if (!regex.IsMatch(loginTextBox.Text))
+            {
+                MessageBox.Show("Вы ввели не корректный адрес электронной почты");
+                return;
+            }
+            if (passwordBox.Password == "")
+            {
+                MessageBox.Show("Вы не ввели пароль");
+                return;
+            }
+            if(passwordBox.Password.Length < 6)
+            {
+                MessageBox.Show("Пароль слишком короткий");
+                return;
+            }
+
+            hash = Hash(passwordBox.Password.ToString());
             usersModel.user_login = loginTextBox.Text;
             usersModel.user_password = hash;
-            usersModel.user_id = authorizationService.GetUsersList().Count;
-            authorizationService.AddAccount(usersModel);
 
-            MainWindow main = new MainWindow();
-            main.Show();
+            if (!isRegistration)
+            {
+                if (!authorizationService.isUserEmailExists(usersModel.user_login))
+                {
+                    MessageBox.Show("Неверный логин!");
+                    return;
+                }
+                if (!authorizationService.isLoginDataValid(usersModel.user_password, usersModel.user_login))
+                {
+                    MessageBox.Show("Неверный пароль!");
+                    return;
+                }
+            }
+            else
+            {
+                usersModel.user_id = authorizationService.GetUsersList().Count;
+                authorizationService.AddAccount(usersModel);
+            }
+
+            DialogResult = true;
+
+            ShopWindowMenu shopWindowMenu = new ShopWindowMenu();
+            shopWindowMenu.Show();
+
             this.Close();
         }
+
         private string Hash(string ha)
         {
             using (var md5 = new MD5CryptoServiceProvider())
@@ -65,5 +116,7 @@ namespace MKT
                 return sb.ToString();
             }
         }
+
+
     }
 }

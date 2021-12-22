@@ -36,6 +36,16 @@ namespace BLL.Methods
             return db.AuthorizationRepository.GetList().Select(i => new UsersModel(i)).ToList();
         }
 
+        public bool isUserEmailExists(string userEmail)
+        {
+            return db.AuthorizationRepository.isUserEmailExists(userEmail);
+        }
+
+        public bool isLoginDataValid(string userPassword, string userEmail)
+        {
+            return db.AuthorizationRepository.isLoginDataValid(userPassword, userEmail);
+        }
+
         public void Save()
         {
             db.Save();

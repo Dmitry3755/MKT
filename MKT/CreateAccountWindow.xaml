@@ -42,7 +42,7 @@
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="206,179,0,0" TextWrapping="Wrap" Text="Введите пароль" VerticalAlignment="Top" Width="150"/>
         <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="206,81,0,0" TextWrapping="Wrap" Text="Введите логин" VerticalAlignment="Top" Width="150"/>
         <TextBox x:Name="loginTextBox" Height="25" Margin="206,107,206,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontSize="14"/>
-        <Button x:Name="button" Content="Создать" Height="24" Margin="260,251,260,0" VerticalAlignment="Top" Click="button_Click"/>
+        <Button x:Name="createButton" Content="Создать" Height="24" Margin="260,251,260,0" VerticalAlignment="Top" Click="createButtonClick"/>
     </Grid>
 
 </Window>

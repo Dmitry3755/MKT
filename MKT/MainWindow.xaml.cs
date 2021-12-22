@@ -41,23 +41,29 @@ namespace MKT
             this.Top = (screenHeight - this.Height) / 2.0;
             this.Left = (screenWidth - this.Width) / 2.0;
         }
-        private void button1_Click(object sender, RoutedEventArgs e)
+        private void exitButtonClick(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
 
-        private void button_Click_1(object sender, RoutedEventArgs e)
+        private void enterButtonClick(object sender, RoutedEventArgs e)
         {
-            EntryWindow entryWindow = new EntryWindow();
-            entryWindow.Show();
-            this.Close();
+            CreateAccountWindow createAccountWindow = new CreateAccountWindow(authorizationService, false);
+
+            if(createAccountWindow.ShowDialog() == true)
+            {
+                this.Close();
+            }
         }
 
-        private void Create_Click(object sender, RoutedEventArgs e)
+        private void createButtonClick(object sender, RoutedEventArgs e)
         {
-            CreateAccountWindow createAccountWindow = new CreateAccountWindow(authorizationService);
-            createAccountWindow.Show();
-            this.Close();    
+            CreateAccountWindow createAccountWindow = new CreateAccountWindow(authorizationService, true);
+
+            if (createAccountWindow.ShowDialog() == true)
+            {
+                this.Close();
+            }
         }
     }
 }
