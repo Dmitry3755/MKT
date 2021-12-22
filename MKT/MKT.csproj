@@ -157,7 +157,12 @@
   <ItemGroup>
     <Resource Include="Снимок1.PNG" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\BLL\BLL.csproj">
+      <Project>{9a0ac42d-e6f5-4ccd-b3f2-18846636cba5}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.8">
       <Visible>False</Visible>
