@@ -17,9 +17,9 @@ namespace MKT
     /// <summary>
     /// Логика взаимодействия для Entry_window.xaml
     /// </summary>
-    public partial class Entry_window : Window
+    public partial class EntryWindow : Window
     {
-        public Entry_window()
+        public EntryWindow()
         {
             InitializeComponent();
             double screenHeight = SystemParameters.FullPrimaryScreenHeight;

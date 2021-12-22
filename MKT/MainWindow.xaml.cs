@@ -35,8 +35,8 @@ namespace MKT
 
         private void button_Click_1(object sender, RoutedEventArgs e)
         {
-            Entry_window entry_Window = new Entry_window();
-            entry_Window.Show();
+            EntryWindow entryWindow = new EntryWindow();
+            entryWindow.Show();
             this.Close();
         }
 

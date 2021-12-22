@@ -85,8 +85,8 @@
     <Compile Include="CashWindow.xaml.cs">
       <DependentUpon>CashWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Entry_window.xaml.cs">
-      <DependentUpon>Entry_window.xaml</DependentUpon>
+    <Compile Include="EntryWindow.xaml.cs">
+      <DependentUpon>EntryWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="SQl\Cheque.cs" />
     <Compile Include="SQl\Information_about_sales.cs" />
@@ -106,7 +106,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Entry_window.xaml">
+    <Page Include="EntryWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
