@@ -8,7 +8,7 @@ namespace DAL.Interfaces
 {
     public interface IProductRepository
     {
-        List<Products> SqlQuery(double[] mass);
+        List<Products> SqlQuery(object[] mass);
         Products Single(int productId);
         List<Products> Filter(int category_id);
         List<Products> GetList();

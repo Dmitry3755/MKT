@@ -89,10 +89,20 @@
     <Compile Include="CreateAccountWindow.xaml.cs">
       <DependentUpon>CreateAccountWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="FilterWindow.xaml.cs">
+      <DependentUpon>FilterWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="QueryWindow.xaml.cs">
+      <DependentUpon>QueryWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ShopWindowMenu.xaml.cs">
       <DependentUpon>ShopWindowMenu.xaml</DependentUpon>
     </Compile>
     <Compile Include="Util\NinjectRegistrations.cs" />
+    <Page Include="FilterWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -106,6 +116,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="CreateAccountWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="QueryWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

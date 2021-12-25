@@ -28,15 +28,11 @@ namespace DAL.Repository
         {
             return db.Products.Single(id => id.product_id == productId);
         }
-        public List<Products> SqlQuery(double[] mass)
+        public List<Products> SqlQuery(object[] mass)
         {
-            object[] queryMass = new object[3];
-            queryMass[0] = new SqlParameter("@PRICE_MIN", Convert.ToDouble(mass[0]));
-            queryMass[1] = new SqlParameter("@PRICE_MAX", Convert.ToDouble(mass[1]));
-            queryMass[2] = new SqlParameter("@CATEGORY_FK", Convert.ToInt32(mass[2]));
             List<Products>
-            list = db.Database.SqlQuery<Products>("dbo.Query @PRICE_MIN, @PRICE_MAX, @CATEGORY_FK", queryMass)
-            .ToList();
+              list = db.Database.SqlQuery<Products>("dbo.Query @PRICE_MIN, @PRICE_MAX, @CATEGORY_FK", mass)
+              .ToList();
             return list;
         }
         public void Create(Products products)

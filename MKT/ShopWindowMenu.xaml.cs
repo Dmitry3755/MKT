@@ -11,6 +11,12 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Configuration;
+using Ninject;
+using Ninject.Modules;
+using BLL.Interfaces;
+using BLL;
+using MKT.Util;
 
 namespace MKT
 {
@@ -19,8 +25,14 @@ namespace MKT
     /// </summary>
     public partial class ShopWindowMenu : Window
     {
+        IChequeService chequeService;
         public ShopWindowMenu()
         {
+            string connection = ConfigurationManager.ConnectionStrings["PcshopContext"].ConnectionString;
+            var kernel = new StandardKernel(new NinjectRegistrations(), new ServiceModule(connection));
+            chequeService = kernel.Get<IChequeService>();
+
+
             InitializeComponent();
             double screenHeight = SystemParameters.FullPrimaryScreenHeight;
             double screenWidth = SystemParameters.FullPrimaryScreenWidth;
@@ -35,12 +47,14 @@ namespace MKT
 
         private void queryButtonClick(object sender, RoutedEventArgs e)
         {
-
+            QueryWindow queryWindow = new QueryWindow(chequeService);
+            queryWindow.ShowDialog();
         }
 
         private void filterButtonClick(object sender, RoutedEventArgs e)
         {
-
+            FilterWindow filterWindow = new FilterWindow(chequeService);
+            filterWindow.ShowDialog();
         }
 
         private void exitButtonClick(object sender, RoutedEventArgs e)

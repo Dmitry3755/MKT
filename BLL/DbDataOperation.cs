@@ -102,7 +102,7 @@ namespace BLL
                 .ToList();
             return list;
         }
-        public List<ProductsModel> querySQl(double[] mass)
+        public List<ProductsModel> querySQl(object[] mass)
         {
 
             var list = db.ProductsRepository.SqlQuery(mass)

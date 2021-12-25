@@ -13,7 +13,7 @@ namespace BLL.Interfaces
         void AddProduct(ProductsModel productsModel);
         int Savebd();
         void DeleteProducts(int id);
-        List<ProductsModel> querySQl(double[] mass);
+        List<ProductsModel> querySQl(object[] mass);
         void cancleProduct(int productId, int countOfProducts);
         void UpdateProduct(ProductsModel productsmodel);
 
