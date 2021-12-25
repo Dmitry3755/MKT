@@ -64,10 +64,26 @@ namespace MKT
         private void showButtonClick(object sender, RoutedEventArgs e)
         {
             object[] mass = new object[3];
-            SqlParameter parameter = new SqlParameter("@PRICE_MIN", Convert.ToDouble(priceMinTextBox.Text));
-            SqlParameter parameter1 = new SqlParameter("@PRICE_MAX", Convert.ToDouble(priceMaxTextBox.Text));
             ProductsModel productsModel = new ProductsModel();
             CategoryModel categoryModel = new CategoryModel();
+
+            if (priceMinTextBox.Text == "")
+            {
+                MessageBox.Show("Вы не указали цену");
+                return;
+            }
+            if (priceMaxTextBox.Text == "")
+            {
+                MessageBox.Show("Вы не указали цену");
+                return;
+            }
+            if(comboBox.SelectedIndex == -1)
+            {
+                MessageBox.Show("Вы не указали категорию");
+                return;
+            }
+            SqlParameter parameter = new SqlParameter("@PRICE_MIN", Convert.ToDouble(priceMinTextBox.Text));
+            SqlParameter parameter1 = new SqlParameter("@PRICE_MAX", Convert.ToDouble(priceMaxTextBox.Text));
             categoryModel = allCategory.ElementAt(comboBox.SelectedIndex);
             SqlParameter parameter2 = new SqlParameter("@CATEGORY_FK", Convert.ToInt32(categoryModel.category_id));
             mass[0] = parameter;
@@ -86,6 +102,16 @@ namespace MKT
                 Скидка = pr.discount,
                 Категория = ct.category_name
             }).ToList();
+        }
+
+        private void priceMinTextBoxPreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = !(Char.IsDigit(e.Text, 0));
+        }
+
+        private void priceMaxTextBoxPreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = !(Char.IsDigit(e.Text, 0));
         }
     }
 }
