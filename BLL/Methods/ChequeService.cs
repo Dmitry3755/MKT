@@ -28,6 +28,7 @@ namespace BLL.Methods
         {
             sales = db.InformationAboutSales.GetList();
             DateTime salesDate = DateTime.Now;
+            double[] discount = new double[chequeData.Length / 7];
             string[] lines = new string[5];
             double price = 0.0;
             string s1 = "Товар: ";
@@ -56,7 +57,7 @@ namespace BLL.Methods
 
             for (int i = 0; i < chequeData.Length / 7 ; i++)
             {
-
+                discount[i] = Convert.ToDouble(chequeData[i, 5]);
                 info.sales_count = Convert.ToInt32(chequeData[i, 3]);
                 info.sales_date = salesDate;
                 info.sales_price = Convert.ToDecimal(chequeData[i, 4]);
@@ -70,12 +71,19 @@ namespace BLL.Methods
                 lines[2] = s3.Insert(s3.Length, Convert.ToString(info.sales_price));
                 lines[3] = s4.Insert(s4.Length, Convert.ToString(info.sales_date));
                 lines[4] = "";
-                price += Convert.ToDouble(info.sales_price * info.sales_count);
+
+                if(discount[i] != 0)
+                {
+                    price += (Convert.ToDouble(info.sales_price) - ((Convert.ToDouble(info.sales_price) * discount[i] )/ 100)) * info.sales_count;
+                }
+                else
+                {
+                    price += Convert.ToDouble(info.sales_price * info.sales_count);
+                }
                 File.AppendAllLines(path, lines);
             }
-            File.AppendAllText(path, $"Сумма: {price} рублей");
+                File.AppendAllText(path, $"Сумма: {price} рублей"); 
 
         }
-
     }
 }
