@@ -25,15 +25,15 @@ namespace MKT
         IChequeService chequeService;
 
         List<CategoryModel> allCategory;
-        List<ProductsModel> allProducts;
-        CategoryModel CategoryDTO = new CategoryModel();    
+        List<ProductsModel> allProducts;  
         public ProductsModel selectedProduct = new ProductsModel();
-
-        public AddProductWindow(IChequeService service)
+        public List<ProductsModel> selectedProducts;
+        public AddProductWindow(IChequeService service, List<ProductsModel> selectedProducts)
         {
             chequeService = service;
             InitializeComponent();
 
+            this.selectedProducts = selectedProducts;
             double screenHeight = SystemParameters.FullPrimaryScreenHeight;
             double screenWidth = SystemParameters.FullPrimaryScreenWidth;
             this.Top = (screenHeight - this.Height) / 2.0;
@@ -61,7 +61,7 @@ namespace MKT
                 MessageBox.Show("Вы не выбрали товар");
                 return;
             }
-            id = Convert.ToInt32(product.GetType().GetProperty("Id").GetValue(product, null));
+            id = Convert.ToInt32(product.GetType().GetProperty("Id").GetValue(product, null));   
             selectedProduct = chequeService.GetProduct(id);
 
             if (Convert.ToInt32(countOfProductTextBox.Text) > Convert.ToInt32(selectedProduct.count_of_products))
@@ -71,6 +71,7 @@ namespace MKT
             else
             {
                 selectedProduct.count_of_products = Convert.ToInt32(countOfProductTextBox.Text);
+
                 this.Close();
             }
         }
@@ -79,6 +80,11 @@ namespace MKT
         {
             allCategory = chequeService.GetCategories();
             allProducts = chequeService.GetAllProducts();
+            for(int i =0; i < selectedProducts.Count; i++)
+            {
+                allProducts.Single(pr => pr.product_id == selectedProducts[i].product_id).count_of_products -= selectedProducts[i].count_of_products;
+            }
+
             dataGrid.ItemsSource = allProducts
             .Join(allCategory, pr => pr.category_FK, ct => ct.category_id, (pr, ct) => new
             {
@@ -90,6 +96,23 @@ namespace MKT
                 Скидка = pr.discount,
                 Категория = ct.category_name
             }).ToList();
+        }
+
+        private void nameProductTextBoxTextChanged(object sender, TextChangedEventArgs e)
+        {
+            var products = allProducts
+             .Join(allCategory, pr => pr.category_FK, ct => ct.category_id, (pr, ct) => new
+             {
+                 Id = pr.product_id,
+                 Product_name = pr.product_name,
+                 Technical_specifications = pr.technical_specifications,
+                 Count_of_products = pr.count_of_products,
+                 Product_price = pr.product_price,
+                 Discount = pr.discount,
+                 Сategory = ct.category_name
+             })
+             .Where(name => name.Product_name.ToLower().StartsWith(nameProductTextBox.Text.ToLower())).ToList();
+            dataGrid.ItemsSource = products;
         }
     }
 }

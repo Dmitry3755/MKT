@@ -40,7 +40,7 @@
             <DataGrid x:Name="dataGrid" ColumnWidth="*" HorizontalAlignment="Left" Height="222" Margin="10,80,0,0" VerticalAlignment="Top" Width="772"/>
             <Button x:Name="acceptButton" Content="Подтвердить" Margin="341,307,341,0" VerticalAlignment="Top" FontSize="18" Click="acceptButtonClick"/>
             <Label x:Name="label" Content="Введите имя товара" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="18" Foreground="#FF1B71B8"/>
-            <TextBox x:Name="nameProductTextBox" HorizontalAlignment="Left" Height="23" Margin="20,44,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="165"/>
+            <TextBox x:Name="nameProductTextBox" HorizontalAlignment="Left" Height="23" Margin="20,44,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="165" TextChanged="nameProductTextBoxTextChanged"/>
             <Label x:Name="label_Copy" Content="Введите количество товара" HorizontalAlignment="Left" Margin="231,10,0,0" VerticalAlignment="Top" FontSize="18" Foreground="#FF1B71B8"/>
             <TextBox x:Name="countOfProductTextBox" HorizontalAlignment="Left" Height="23" Margin="231,44,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="237" PreviewTextInput="countOfProductTextBoxPreviewTextInput"/>
 

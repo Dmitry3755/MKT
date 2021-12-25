@@ -66,7 +66,7 @@ namespace MKT
         private void AddProductButtonClick(object sender, RoutedEventArgs e)
         {
             string[] item = new string[7];
-            AddProductWindow addProductWindow = new AddProductWindow(chequeService);
+            AddProductWindow addProductWindow = new AddProductWindow(chequeService, selectedProducts.ToList());
             addProductWindow.ShowDialog();
             if ((addProductWindow.selectedProduct != null) && (addProductWindow.selectedProduct.count_of_products != 0))
             {
@@ -105,6 +105,7 @@ namespace MKT
                 chequeData[i, 6] = productsModel.category_FK;
             }
             chequeCreate.printCheque(chequeData);
+            
             MessageBox.Show("Чек успешно сформирован");
         }
 
