@@ -34,7 +34,7 @@ namespace BLL.Methods
             string s2 = "Количество: ";
             string s3 = "Цена: ";
             string s4 = "Дата: ";
-            string path = "D:\\ИГЭУ\\3-й курс\\Фомина\\Sql и лабы\\Lab№4\\BLL\\Cheque\\";
+            string path = "../../../BLL/Cheque/";
             string[] AllFiles = Directory.GetFiles(path, ".", SearchOption.AllDirectories);
             int count = AllFiles.Count();
 
@@ -54,7 +54,7 @@ namespace BLL.Methods
                 path = path.Insert(path.Length, "Cheque1.txt");
             }
 
-            for (int i = 0; i < chequeData.Length / 7 - 1; i++)
+            for (int i = 0; i < chequeData.Length / 7 ; i++)
             {
 
                 info.sales_count = Convert.ToInt32(chequeData[i, 3]);
