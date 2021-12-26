@@ -35,6 +35,8 @@ namespace MKT
             {
                 createButton.Content = "Войти";
             }
+            loginTextBox.Text = "admin@gmail.com";
+            passwordBox.Password = "29052001";
             double screenHeight = SystemParameters.FullPrimaryScreenHeight;
             double screenWidth = SystemParameters.FullPrimaryScreenWidth;
             this.Top = (screenHeight - this.Height) / 2.0;
@@ -45,6 +47,10 @@ namespace MKT
         private void createButtonClick(object sender, RoutedEventArgs e)
         {
             UsersModel usersModel = new UsersModel();
+            UsersRolesModel usersRolesModel = new UsersRolesModel();
+            List<UsersRolesModel> usersRolesModelsList = new List<UsersRolesModel>();
+            usersRolesModelsList = authorizationService.GetAllUsersRoles();
+
             string hash;
             Regex regex = new Regex(@"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$");
            
@@ -57,6 +63,14 @@ namespace MKT
             {
                 MessageBox.Show("Вы ввели не корректный адрес электронной почты");
                 return;
+            }
+            if (isRegistration)
+            {
+                if (authorizationService.isUserEmailExists(loginTextBox.Text))
+                {
+                    MessageBox.Show("Адрес электронной почты уже используется");
+                    return;
+                }
             }
             if (passwordBox.Password == "")
             {
@@ -93,10 +107,10 @@ namespace MKT
             }
 
             DialogResult = true;
-
-            ShopWindowMenu shopWindowMenu = new ShopWindowMenu();
+            usersModel.user_id = authorizationService.GetUsersList().Where(i => i.user_login.Equals(usersModel.user_login)).First().user_id;
+            usersRolesModel = usersRolesModelsList.Where(i => i.user_id_FK == usersModel.user_id).First();
+            ShopWindowMenu shopWindowMenu = new ShopWindowMenu(usersRolesModel.role_id_FK);
             shopWindowMenu.Show();
-
             this.Close();
         }
 

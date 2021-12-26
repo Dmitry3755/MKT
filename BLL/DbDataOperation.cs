@@ -29,6 +29,7 @@ namespace BLL
         {
             return new ProductsModel(db.ProductsRepository.GetItem(id));
         }
+
         public void DeleteProducts(int id)
         {
             Products pr = db.ProductsRepository.GetItem(id);

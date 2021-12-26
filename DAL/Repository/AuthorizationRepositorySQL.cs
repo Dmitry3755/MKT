@@ -34,7 +34,10 @@ namespace DAL.Repository
         {
             return db.Users.ToList();
         }
-
+        public List<Users_roles> GetAllUsersRoles()
+        {
+            return db.Users_roles.ToList();
+        }
         public bool isUserEmailExists(string userEmail)
         {     
             try

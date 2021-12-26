@@ -10,6 +10,7 @@ namespace DAL.Interfaces
     {
        void AddAccount(Users users);
        List<Users> GetList();
+       List<Users_roles> GetAllUsersRoles();
        bool isUserEmailExists(string userEmail);
        bool isLoginDataValid(string userPassword, string userEmail);
        void Save();

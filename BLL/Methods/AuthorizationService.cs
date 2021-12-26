@@ -29,7 +29,10 @@ namespace BLL.Methods
             });
 
         }
-
+        public List<UsersRolesModel> GetAllUsersRoles()
+        {
+            return db.AuthorizationRepository.GetAllUsersRoles().Select(i => new UsersRolesModel(i)).ToList();
+        }
         public List<UsersModel> GetUsersList()
         {
             return db.AuthorizationRepository.GetList().Select(i => new UsersModel(i)).ToList();

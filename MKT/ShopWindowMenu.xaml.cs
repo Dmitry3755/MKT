@@ -28,7 +28,7 @@ namespace MKT
         IChequeService chequeService;
         IChequeCreate chequeCreate;
         IProductService productService;
-        public ShopWindowMenu()
+        public ShopWindowMenu(int role)
         {
             string connection = ConfigurationManager.ConnectionStrings["PcshopContext"].ConnectionString;
             var kernel = new StandardKernel(new NinjectRegistrations(), new ServiceModule(connection));
@@ -37,6 +37,14 @@ namespace MKT
             productService = kernel.Get<IProductService>();
 
             InitializeComponent();
+
+            if(role == 2)
+            {
+                addProductButton.Visibility = Visibility.Collapsed;
+                suppliersButton.Visibility = Visibility.Collapsed;
+                analysisSalesButton.Visibility = Visibility.Collapsed;
+            }
+
             double screenHeight = SystemParameters.FullPrimaryScreenHeight;
             double screenWidth = SystemParameters.FullPrimaryScreenWidth;
             this.Top = (screenHeight - this.Height) / 2.0;
@@ -64,6 +72,11 @@ namespace MKT
         private void exitButtonClick(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void listProductsButtonClick(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

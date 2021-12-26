@@ -8,7 +8,6 @@ namespace BLL.Interfaces
         List<ProductsModel> GetAllProducts();
         List<CategoryModel> GetCategories();
         List<ProductsModel> Filter(int category_id);
-
         ProductsModel GetProduct(int productId);
         void AddProduct(ProductsModel productsModel);
         int Savebd();

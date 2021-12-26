@@ -10,6 +10,7 @@ namespace BLL.Interfaces
     {
        void AddAccount(UsersModel usersModel);
        List<UsersModel> GetUsersList();
+       List<UsersRolesModel> GetAllUsersRoles();
        bool isUserEmailExists(string userEmail);
        bool isLoginDataValid(string userPassword, string userEmail);
        void Save();
