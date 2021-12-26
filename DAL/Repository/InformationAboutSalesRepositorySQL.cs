@@ -25,7 +25,15 @@ namespace DAL.Repository
         {
             return db.Information_about_sales.Find(id);
         }
+        public void CreateList(List<Information_about_sales> list)
+        {
+            for (int i = 0; i < list.Count; i++)
+            {
+                db.Information_about_sales.Add(list[i]);
+            }
+            Save();
 
+        }
         public void Create(Information_about_sales Sales)
         {
             db.Information_about_sales.Add(Sales);

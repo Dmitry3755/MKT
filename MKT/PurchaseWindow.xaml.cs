@@ -24,6 +24,8 @@ namespace MKT
     {
         IChequeService chequeService;
         IChequeCreate chequeCreate;
+        IProductService productService;
+
 
         List<CategoryModel> allCategory;
         List<ProductsModel> allProducts;
@@ -31,10 +33,11 @@ namespace MKT
         List<informationAboutSalesModel> list;
         public object[] mass = new object[1];
 
-        public PurchaseWindow(IChequeService service, IChequeCreate cheque)
+        public PurchaseWindow(IChequeService service, IChequeCreate cheque, IProductService productSer)
         {
             chequeService = service;
             chequeCreate = cheque;
+            productService = productSer;
 
             InitializeComponent();
             selectedProducts = new ObservableCollection<ProductsModel>();
@@ -105,7 +108,7 @@ namespace MKT
                 chequeData[i, 6] = productsModel.category_FK;
             }
             chequeCreate.printCheque(chequeData);
-            
+            productService.infoAboutSales(chequeData);
             MessageBox.Show("Чек успешно сформирован");
         }
 

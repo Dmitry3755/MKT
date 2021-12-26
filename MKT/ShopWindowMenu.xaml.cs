@@ -27,12 +27,14 @@ namespace MKT
     {
         IChequeService chequeService;
         IChequeCreate chequeCreate;
+        IProductService productService;
         public ShopWindowMenu()
         {
             string connection = ConfigurationManager.ConnectionStrings["PcshopContext"].ConnectionString;
             var kernel = new StandardKernel(new NinjectRegistrations(), new ServiceModule(connection));
             chequeService = kernel.Get<IChequeService>();
             chequeCreate = kernel.Get<IChequeCreate>();
+            productService = kernel.Get<IProductService>();
 
             InitializeComponent();
             double screenHeight = SystemParameters.FullPrimaryScreenHeight;
@@ -43,7 +45,7 @@ namespace MKT
 
         private void cashRegisterButtonClick(object sender, RoutedEventArgs e)
         {
-            PurchaseWindow purchaseWindow = new PurchaseWindow(chequeService, chequeCreate);
+            PurchaseWindow purchaseWindow = new PurchaseWindow(chequeService, chequeCreate, productService);
             purchaseWindow.ShowDialog();
         }
 

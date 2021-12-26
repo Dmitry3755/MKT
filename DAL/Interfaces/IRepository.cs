@@ -10,6 +10,7 @@ namespace DAL.Interfaces
     public interface IRepository<T> where T : class
     {
         List<T> GetList();
+        void CreateList(List<T> list);
         T GetItem(int id);
         void Create(T item);
         void Update(T item);

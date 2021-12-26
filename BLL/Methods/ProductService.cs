@@ -28,8 +28,13 @@ namespace BLL.Methods
         public void infoAboutSales(object[,] chequeData)
         {
             DateTime salesDate = DateTime.Now;
+            var sale = sales;
+            sales = db.InformationAboutSales.GetList();
+            int countId = sales.Count();
+
             for (int i = 0; i < chequeData.GetLength(0); i++)
             {
+                info = new Information_about_sales();
                 for (int j = 0; j < 6; j++)
                 {
                     switch (j)
@@ -51,13 +56,14 @@ namespace BLL.Methods
                             info.sales_price = Convert.ToDecimal(chequeData[i, j]);
                             break;
                         case 5:
-                            sales = db.InformationAboutSales.GetList();
-                            info.Information_about_sales_id = sales.Count();
+                            info.Information_about_sales_id = countId;
+                            countId = countId + 1;
                             break;
                     }
                 }
-                db.InformationAboutSales.Create(info);
+                sale.Add(info);
             }
+            db.InformationAboutSales.CreateList(sale);
         }
     }
 }
