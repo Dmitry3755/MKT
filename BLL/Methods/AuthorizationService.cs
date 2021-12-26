@@ -27,7 +27,6 @@ namespace BLL.Methods
                 user_login = usersModel.user_login,
                 user_password = usersModel.user_password
             });
-            Save();
 
         }
 

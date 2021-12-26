@@ -35,8 +35,6 @@ namespace MKT
             {
                 createButton.Content = "Войти";
             }
-            loginTextBox.Text = "admin3@gmail.com";
-            passwordBox.Password = "29052001";
             double screenHeight = SystemParameters.FullPrimaryScreenHeight;
             double screenWidth = SystemParameters.FullPrimaryScreenWidth;
             this.Top = (screenHeight - this.Height) / 2.0;

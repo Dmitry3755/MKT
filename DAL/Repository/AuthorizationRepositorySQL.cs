@@ -19,9 +19,16 @@ namespace DAL.Repository
 
         public void AddAccount(Users users)
         {
+            List<Users_roles> usersRolesList = new List<Users_roles>();
+            Users_roles usersRoles = new Users_roles();
+            usersRolesList = db.Users_roles.ToList();
+            usersRoles.users_roles_id = usersRolesList.Count();
+            usersRoles.user_id_FK = users.user_id;
+            usersRoles.role_id_FK = 2;
 
             db.Users.Add(users);
-
+            db.Users_roles.Add(usersRoles);
+            Save();
         }
         public List<Users> GetList()
         {
@@ -29,9 +36,7 @@ namespace DAL.Repository
         }
 
         public bool isUserEmailExists(string userEmail)
-        {
-
-            //if (db.Users.Select(i => i.user_login.Equals(userEmail)).ToList().Count == 0)
+        {     
             try
             {
                 db.Users.First(i => i.user_login.Equals(userEmail));
