@@ -16,7 +16,9 @@ namespace DAL.Repository
         private ProductsRepositorySQL repositorySQL;
         private CategoryRepositorySQL CategoryRepositorySQL;
         private AuthorizationRepositorySQL authorizationRepositorySQL;
-             
+        private LegalPersonRepositorySQL legalPersonRepositorySQL;
+        private PhysicalPersonRepositorySQL physicalPersonRepositorySQl;
+
         public DatabaseChequeRepositorySQL()
         {
             db = new PcShopContext();
@@ -58,6 +60,24 @@ namespace DAL.Repository
                 if (SalesSQL == null)
                     SalesSQL = new InformationAboutSalesRepositorySQL(db);
                 return SalesSQL;
+            }
+        }
+        public ISuppliersRepository<Legal_person> LegalPersonRepository
+        {
+            get
+            {
+                if (legalPersonRepositorySQL == null)
+                    legalPersonRepositorySQL = new LegalPersonRepositorySQL(db);
+                return legalPersonRepositorySQL;
+            }
+        }
+        public ISuppliersRepository<Physical_person> PhysicalPersonRepository
+        {
+            get
+            {
+                if (physicalPersonRepositorySQl == null)
+                    physicalPersonRepositorySQl = new PhysicalPersonRepositorySQL(db);
+                return physicalPersonRepositorySQl;
             }
         }
         public IChequeRepository Cheques

@@ -19,6 +19,7 @@ namespace MKT.Util
             Bind<IChequeCreate>().To<ChequeService>();
             Bind<IProductService>().To<ProductService>();
             Bind<IAuthorizationService>().To<AuthorizationService>();
+            Bind<ISupplierService>().To<SupplierService>();
         }
     }
 }

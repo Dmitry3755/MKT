@@ -61,6 +61,7 @@
     <Compile Include="Interfaces\IProductRepository.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="EF\Legal_person.cs" />
+    <Compile Include="Interfaces\ISuppliersRepository.cs" />
     <Compile Include="PcShopContext.cs" />
     <Compile Include="EF\Physical_person.cs" />
     <Compile Include="Entities\Products.cs" />
@@ -70,6 +71,7 @@
     <Compile Include="Repository\ChequeRepositorySQL.cs" />
     <Compile Include="Repository\DatabaseChequeRepositorySQL.cs" />
     <Compile Include="Repository\InformationAboutSalesRepositorySQL.cs" />
+    <Compile Include="Repository\PhysicalPersonRepositorySQL.cs" />
     <Compile Include="Repository\ProductsRepositorySQL.cs" />
     <Compile Include="EF\Roles.cs" />
     <Compile Include="EF\Supplier.cs" />
@@ -77,6 +79,7 @@
     <Compile Include="EF\Users.cs" />
     <Compile Include="EF\Users_roles.cs" />
     <Compile Include="Entities\Сategory.cs" />
+    <Compile Include="Repository\LegalPersonRepositorySQL.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />

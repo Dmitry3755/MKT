@@ -44,6 +44,39 @@ namespace BLL
             db.ProductsRepository.Single(productId).count_of_products = countOfProducts;
             Save();
         }
+        public List<ProductsModel> Filter(int category_id)
+        {
+            var list = db.ProductsRepository.Filter(category_id)
+                .Select(i => new ProductsModel()
+                {
+                    product_id = i.product_id,
+                    product_name = i.product_name,
+                    technical_specifications = i.technical_specifications,
+                    count_of_products = i.count_of_products,
+                    discount = i.discount,
+                    product_price = i.product_price,
+                    category_FK = i.category_FK
+                })
+                .ToList();
+            return list;
+        }
+        public List<ProductsModel> querySQl(object[] mass)
+        {
+
+            var list = db.ProductsRepository.SqlQuery(mass)
+                .Select(i => new ProductsModel()
+                {
+                    product_id = i.product_id,
+                    product_name = i.product_name,
+                    technical_specifications = i.technical_specifications,
+                    count_of_products = i.count_of_products,
+                    discount = i.discount,
+                    product_price = i.product_price,
+                    category_FK = i.category_FK
+                })
+                .ToList();
+            return list;
+        }
         public void UpdateProduct(ProductsModel productsmodel)
         {
             Products pr = db.ProductsRepository.GetItem(productsmodel.product_id);
@@ -86,39 +119,6 @@ namespace BLL
                 db.ProductsRepository.Single(productsModel.product_id).count_of_products -= (int)chequeData[i, 3];
             }
             Save();
-        }
-        public List<ProductsModel> Filter(int category_id)
-        {
-            var list = db.ProductsRepository.Filter(category_id)
-                .Select(i => new ProductsModel()
-                {
-                    product_id = i.product_id,
-                    product_name = i.product_name,
-                    technical_specifications = i.technical_specifications,
-                    count_of_products = i.count_of_products,
-                    discount = i.discount,
-                    product_price = i.product_price,
-                    category_FK = i.category_FK
-                })
-                .ToList();
-            return list;
-        }
-        public List<ProductsModel> querySQl(object[] mass)
-        {
-
-            var list = db.ProductsRepository.SqlQuery(mass)
-                .Select(i => new ProductsModel()
-                {
-                    product_id = i.product_id,
-                    product_name = i.product_name,
-                    technical_specifications = i.technical_specifications,
-                    count_of_products = i.count_of_products,
-                    discount = i.discount,
-                    product_price = i.product_price,
-                    category_FK = i.category_FK
-                })
-                .ToList();
-            return list;
         }
         public int Savebd()
         {

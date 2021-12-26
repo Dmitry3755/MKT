@@ -110,6 +110,9 @@
     <Compile Include="ShopWindowMenu.xaml.cs">
       <DependentUpon>ShopWindowMenu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="suppliersWindow.xaml.cs">
+      <DependentUpon>suppliersWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Util\NinjectRegistrations.cs" />
     <Page Include="AddProductInDatabaseWindow.xaml">
       <SubType>Designer</SubType>
@@ -152,6 +155,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ShopWindowMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="suppliersWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

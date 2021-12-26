@@ -57,7 +57,12 @@ namespace MKT
                 productModel.product_price = Convert.ToDecimal(priceProductTextBox.Text);
                 productModel.category_FK = categoryComboBox.SelectedIndex + 1;
                 chequeService.AddProduct(productModel);
-                chequeService.Savebd();
+                nameProductTextBox.Text = "";
+                texnicalspecificationTextBox.Text = "";
+                countOfProductTextBox.Text = "";
+                priceProductTextBox.Text = "";
+                MessageBox.Show("Товар успешно добавлен");
+     
             }
             else
             {

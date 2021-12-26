@@ -1,10 +1,11 @@
-﻿<Window x:Class="MKT.ShopWindowMenu"
-     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+﻿<Window x:Class="MKT.suppliersWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MKT"
         mc:Ignorable="d"
-        Title="МКТ Menu" Height="350" Width="600" Icon="Снимок1.PNG" OpacityMask="Black" Background="#FF04081F">
+        Title="suppliersWindow" Height="450" Width="800" Icon="Снимок1.PNG" OpacityMask="Black" Background="#FF04081F">
 
     <Window.Resources>
         <Style TargetType="{x:Type Button}">
@@ -33,15 +34,14 @@
             </Setter>
         </Style>
     </Window.Resources>
-    <Viewbox>
-        <Grid Background="#FF04081F" OpacityMask="Black" Margin="0,0,0,0">
-            <Button x:Name="cashRegisterButton" Content="Касса" Margin="50,10,50,200" Click="cashRegisterButtonClick"/>
-            <Button x:Name="queryButton" Content="Фильтр товара" Margin="50,38,50,172" Click="queryButtonClick"/>
-            <Button x:Name="filterButton" Content="Поиск по категориям" Margin="50,94,50,116" Click="filterButtonClick"/>
-            <Button x:Name="exitButton" Content="Выйти" Margin="50,206,50,4" Click="exitButtonClick"/>
-            <Button x:Name="listProductsButton" Content="Товары на складе" Margin="122,66,123,0" VerticalAlignment="Top" Click="listProductsButtonClick"/>
-            <Button x:Name="analysisSalesButton" Content="Анализ продаж" Margin="151,122,151,0" VerticalAlignment="Top"/>
-            <Button x:Name="suppliersButton" Content="Поставщики" Margin="171,150,172,0" VerticalAlignment="Top" Click="suppliersButtonClick"/>
-        </Grid>
-    </Viewbox>
+
+    <Grid>
+        <ComboBox x:Name="personComboBox" Margin="315,46,315,0" VerticalAlignment="Top" SelectionChanged="personComboBoxSelectionChanged">
+            <TextBlock>Физическое лицо</TextBlock>
+            <TextBlock>Юридическое лицо</TextBlock>
+        </ComboBox>
+        <Label x:Name="label" Content="Выберете тип лица" Margin="315,10,315,0" VerticalAlignment="Top" Foreground="#FF1B71B8" FontSize="16"/>
+        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Height="279" Margin="10,130,0,0" VerticalAlignment="Top" Width="772" ColumnWidth="*"/>
+
+    </Grid>
 </Window>

@@ -38,6 +38,7 @@ namespace DAL.Repository
         public void Create(Products products)
         {
             db.Products.Add(products);
+            Save();
         }
         public List<Products> Filter(int category_id)
         {

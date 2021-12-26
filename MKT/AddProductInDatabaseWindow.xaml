@@ -34,7 +34,8 @@
             </Setter>
         </Style>
     </Window.Resources>
-
+    
+    <Viewbox>
     <Grid>
         <Label x:Name="label" Content="Название продукта" Margin="10,10,221,0" VerticalAlignment="Top" Foreground="#FF1B71B8" FontSize="16"/>
         <Label x:Name="label1" Content="Технические характеристики" Margin="10,69,147,0" VerticalAlignment="Top"  Foreground="#FF1B71B8" FontSize="16"/>
@@ -51,4 +52,5 @@
         <ComboBox x:Name="sapliersComboBox" HorizontalAlignment="Left" Margin="10,345,0,0" VerticalAlignment="Top" Width="152" SelectedIndex="0"/>
 
     </Grid>
+    </Viewbox>
 </Window>

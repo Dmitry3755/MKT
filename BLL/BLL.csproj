@@ -59,11 +59,16 @@
     <Compile Include="Interfaces\IChequeCreate.cs" />
     <Compile Include="Interfaces\IChequeService.cs" />
     <Compile Include="Interfaces\IProductService.cs" />
+    <Compile Include="Interfaces\ISupplierService.cs" />
     <Compile Include="Methods\AuthorizationService.cs" />
     <Compile Include="Methods\ChequeService.cs" />
     <Compile Include="Methods\ProductService.cs" />
+    <Compile Include="Methods\SupplierService.cs" />
     <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\InformationAboutSuppliersModel.cs" />
     <Compile Include="Models\Information_about_sales.cs" />
+    <Compile Include="Models\LegalPersonModel.cs" />
+    <Compile Include="Models\PhysicalPersonModel.cs" />
     <Compile Include="Models\Products.cs" />
     <Compile Include="Models\Users.cs" />
     <Compile Include="Models\UsersRolesModel.cs" />

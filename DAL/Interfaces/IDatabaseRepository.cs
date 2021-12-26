@@ -12,7 +12,9 @@ namespace DAL.Interfaces
         IRepository<Сategory> CategoryRepository { get; }
         IProductRepository ProductsRepository { get; }
         IChequeRepository Cheques { get; }
-        IAuthorizationRepository AuthorizationRepository { get; }
+        IAuthorizationRepository AuthorizationRepository { get; }    
+        ISuppliersRepository<Physical_person> PhysicalPersonRepository { get; }
+        ISuppliersRepository<Legal_person> LegalPersonRepository { get; }
         int Save();
     }
 }
