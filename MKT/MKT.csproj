@@ -86,6 +86,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddProductInDatabaseWindow.xaml.cs">
+      <DependentUpon>AddProductInDatabaseWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AddProductWindow.xaml.cs">
       <DependentUpon>AddProductWindow.xaml</DependentUpon>
     </Compile>
@@ -108,6 +111,10 @@
       <DependentUpon>ShopWindowMenu.xaml</DependentUpon>
     </Compile>
     <Compile Include="Util\NinjectRegistrations.cs" />
+    <Page Include="AddProductInDatabaseWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AddProductWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

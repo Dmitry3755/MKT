@@ -24,9 +24,16 @@ namespace MKT
         IChequeService chequeService;
         List<CategoryModel> allCategory;
         List<ProductsModel> allProducts;
-        public ListProductWindow(IChequeService service)
+        public ListProductWindow(IChequeService service, int role)
         {
+
             InitializeComponent();
+
+            if(role == 2)
+            {
+                addProductButton.Visibility = Visibility.Collapsed;
+            }
+
             chequeService = service;
             double screenHeight = SystemParameters.FullPrimaryScreenHeight;
             double screenWidth = SystemParameters.FullPrimaryScreenWidth;
@@ -69,6 +76,12 @@ namespace MKT
              })
              .Where(name => name.Product_name.ToLower().StartsWith(nameProductTextBox.Text.ToLower())).ToList();
             dataGrid.ItemsSource = products;
+        }
+
+        private void addProductButtonClick(object sender, RoutedEventArgs e)
+        {
+            AddProductInDatabaseWindow addProductInDatabaseWindow = new AddProductInDatabaseWindow(chequeService);
+            addProductInDatabaseWindow.ShowDialog();
         }
     }
 }

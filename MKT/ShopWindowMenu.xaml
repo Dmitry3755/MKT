@@ -35,14 +35,13 @@
     </Window.Resources>
     <Viewbox>
         <Grid Background="#FF04081F" OpacityMask="Black" Margin="0,0,0,0">
-            <Button x:Name="cashRegisterButton" Content="Касса" Margin="50,38,50,172" Click="cashRegisterButtonClick"/>
-            <Button x:Name="queryButton" Content="Фильтр товара" Margin="50,66,50,144" Click="queryButtonClick"/>
-            <Button x:Name="filterButton" Content="Поиск по категориям" Margin="50,122,50,88" Click="filterButtonClick"/>
+            <Button x:Name="cashRegisterButton" Content="Касса" Margin="50,10,50,200" Click="cashRegisterButtonClick"/>
+            <Button x:Name="queryButton" Content="Фильтр товара" Margin="50,38,50,172" Click="queryButtonClick"/>
+            <Button x:Name="filterButton" Content="Поиск по категориям" Margin="50,94,50,116" Click="filterButtonClick"/>
             <Button x:Name="exitButton" Content="Выйти" Margin="50,206,50,4" Click="exitButtonClick"/>
-            <Button x:Name="addProductButton" Content="Добавить продукт" Margin="92,10,92,0" VerticalAlignment="Top"/>
-            <Button x:Name="listProductsButton" Content="Товары на складе" Margin="123,94,122,0" VerticalAlignment="Top" Click="listProductsButtonClick"/>
-            <Button x:Name="analysisSalesButton" Content="Анализ продаж" Margin="151,150,151,0" VerticalAlignment="Top"/>
-            <Button x:Name="suppliersButton" Content="Поставщики" Margin="171,178,172,0" VerticalAlignment="Top"/>
+            <Button x:Name="listProductsButton" Content="Товары на складе" Margin="122,66,123,0" VerticalAlignment="Top" Click="listProductsButtonClick"/>
+            <Button x:Name="analysisSalesButton" Content="Анализ продаж" Margin="151,122,151,0" VerticalAlignment="Top"/>
+            <Button x:Name="suppliersButton" Content="Поставщики" Margin="171,150,172,0" VerticalAlignment="Top"/>
         </Grid>
     </Viewbox>
 </Window>

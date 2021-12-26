@@ -107,11 +107,44 @@ namespace MKT
         private void priceMinTextBoxPreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             e.Handled = !(Char.IsDigit(e.Text, 0));
-        }
 
+            if(priceMinTextBox.Text.Length > 10)
+            {
+                e.Handled = true;
+            }
+
+            try
+            {
+                if (priceMinTextBox.Text.Length > 1)
+                {
+                    Convert.ToInt32(priceMinTextBox.Text + "0");
+                }
+            }
+            catch (System.OverflowException ex)
+            {
+                e.Handled = true;
+            }
+        }
         private void priceMaxTextBoxPreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             e.Handled = !(Char.IsDigit(e.Text, 0));
+
+            if (priceMaxTextBox.Text.Length > 10)
+            {
+                e.Handled = true;
+            }
+
+            try
+            {
+                if (priceMaxTextBox.Text.Length > 1)
+                {
+                    Convert.ToInt32(priceMaxTextBox.Text + "0");
+                }
+            }
+            catch (System.OverflowException ex)
+            {
+                e.Handled = true;
+            }
         }
     }
 }

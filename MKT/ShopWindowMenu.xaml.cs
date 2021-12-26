@@ -28,6 +28,7 @@ namespace MKT
         IChequeService chequeService;
         IChequeCreate chequeCreate;
         IProductService productService;
+        int role = 0;
         public ShopWindowMenu(int role)
         {
             string connection = ConfigurationManager.ConnectionStrings["PcshopContext"].ConnectionString;
@@ -36,11 +37,12 @@ namespace MKT
             chequeCreate = kernel.Get<IChequeCreate>();
             productService = kernel.Get<IProductService>();
 
+            this.role = role;
+
             InitializeComponent();
 
             if(role == 2)
             {
-                addProductButton.Visibility = Visibility.Collapsed;
                 suppliersButton.Visibility = Visibility.Collapsed;
                 analysisSalesButton.Visibility = Visibility.Collapsed;
             }
@@ -76,7 +78,7 @@ namespace MKT
 
         private void listProductsButtonClick(object sender, RoutedEventArgs e)
         {
-            ListProductWindow listProductWindow = new ListProductWindow(chequeService);
+            ListProductWindow listProductWindow = new ListProductWindow(chequeService, this.role);
             listProductWindow.ShowDialog();
         }
     }
