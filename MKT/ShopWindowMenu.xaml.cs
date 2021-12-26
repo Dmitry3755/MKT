@@ -76,7 +76,8 @@ namespace MKT
 
         private void listProductsButtonClick(object sender, RoutedEventArgs e)
         {
-
+            ListProductWindow listProductWindow = new ListProductWindow(chequeService);
+            listProductWindow.ShowDialog();
         }
     }
 }
