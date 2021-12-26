@@ -76,6 +76,10 @@ namespace MKT
             comboBoxItem = (ComboBoxItem)personComboBox.SelectedItem;
         }
 
-
+        private void addSupplierButtonClick(object sender, RoutedEventArgs e)
+        {
+            AddSupplierWindow addSupplierWindow = new AddSupplierWindow(supplierService);
+            addSupplierWindow.ShowDialog();
+        }
     }
 }

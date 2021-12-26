@@ -42,7 +42,7 @@
         <Label x:Name="label2" Content="Количество" Margin="10,133,275,0" VerticalAlignment="Top" Foreground="#FF1B71B8" FontSize="16"/>
         <Label x:Name="label3" Content="Цена" Margin="10,192,322,0" VerticalAlignment="Top" Foreground="#FF1B71B8" FontSize="16" RenderTransformOrigin="0.5,2.065"/>
         <Label x:Name="label4" Content="Категория" Margin="10,251,275,0" VerticalAlignment="Top" Foreground="#FF1B71B8" FontSize="16"/>
-        <Button x:Name="acceptButton" Content="Подтвердить" Margin="138,436,138,0" VerticalAlignment="Top" Click="acceptButtonClick"/>
+        <Button x:Name="acceptButton" Content="Подтвердить" Margin="138,416,138,10" Click="acceptButtonClick"/>
         <TextBox x:Name="nameProductTextBox" Height="23" Margin="10,41,230,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
         <TextBox x:Name="texnicalspecificationTextBox" Height="23" Margin="10,105,230,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
         <TextBox x:Name="countOfProductTextBox" Height="23" Margin="10,164,230,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>

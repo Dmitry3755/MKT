@@ -34,14 +34,16 @@
             </Setter>
         </Style>
     </Window.Resources>
+    <Viewbox>
+        <Grid>
+            <ComboBox x:Name="personComboBox" Margin="315,46,315,0" VerticalAlignment="Top" SelectionChanged="personComboBoxSelectionChanged">
+                <TextBlock>Физическое лицо</TextBlock>
+                <TextBlock>Юридическое лицо</TextBlock>
+            </ComboBox>
+            <Label x:Name="label" Content="Выберете тип лица" Margin="315,10,315,0" VerticalAlignment="Top" Foreground="#FF1B71B8" FontSize="16"/>
+            <DataGrid x:Name="dataGrid" Height="279" Margin="10,130,10,0" VerticalAlignment="Top" ColumnWidth="*"/>
+            <Button x:Name="addSupplierButton" Content="Добавить поставщика" Margin="482,45,113,0" VerticalAlignment="Top" Click="addSupplierButtonClick"/>
 
-    <Grid>
-        <ComboBox x:Name="personComboBox" Margin="315,46,315,0" VerticalAlignment="Top" SelectionChanged="personComboBoxSelectionChanged">
-            <TextBlock>Физическое лицо</TextBlock>
-            <TextBlock>Юридическое лицо</TextBlock>
-        </ComboBox>
-        <Label x:Name="label" Content="Выберете тип лица" Margin="315,10,315,0" VerticalAlignment="Top" Foreground="#FF1B71B8" FontSize="16"/>
-        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Height="279" Margin="10,130,0,0" VerticalAlignment="Top" Width="772" ColumnWidth="*"/>
-
-    </Grid>
+        </Grid>
+    </Viewbox>
 </Window>
