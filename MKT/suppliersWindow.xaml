@@ -33,15 +33,83 @@
                 </Setter.Value>
             </Setter>
         </Style>
+
+        <Style TargetType="{x:Type DataGrid}">
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="Background" Value="#FF04081F" />
+            <Setter Property="BorderBrush" Value="#FF04081F"/>
+            <Setter Property="Foreground" Value="#FF1B71B8"/>
+            <Setter Property="HeadersVisibility" Value="Column"/>
+        </Style>
+
+        <Style TargetType="{x:Type DataGridColumnHeader}">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Background" Value="#CDA434" />
+            <Setter Property="BorderBrush" Value="#CDA434"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontWeight" Value="Medium"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type DataGridColumnHeader}">
+                        <Border Background="{TemplateBinding Background}" 
+                  BorderBrush="{TemplateBinding BorderBrush}"
+                  BorderThickness="{TemplateBinding BorderThickness}">
+                            <ContentPresenter HorizontalAlignment="Center" 
+                               VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" 
+                          Value="True">
+                                <Setter Property="Background" 
+                           Value="#FF9C7B1E"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+        </Style>
+
+        <Style TargetType="{x:Type DataGridCell}">
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="Background" Value="#FF04081F" />
+            <Setter Property="Foreground" Value="#FF1B71B8"/>
+            <Setter Property="BorderBrush" Value="#FF04081F"/>
+            <Setter Property="BorderThickness" Value="0"/>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type DataGridCell}">
+                        <Border Background="{TemplateBinding Background}" 
+                  BorderBrush="{TemplateBinding BorderBrush}"
+                  BorderThickness="{TemplateBinding BorderThickness}">
+                            <ContentPresenter HorizontalAlignment="Center" 
+                               VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsSelected"
+                                Value="True">
+                                <Setter Property="Background" 
+                           Value="#FF1E2446"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
     </Window.Resources>
+
     <Viewbox>
         <Grid>
+            <DataGrid x:Name="dataGrid" ColumnWidth="*" Height="279" Margin="10,130,10,0" VerticalAlignment="Top"/>
             <ComboBox x:Name="personComboBox" Margin="315,46,315,0" VerticalAlignment="Top" SelectionChanged="personComboBoxSelectionChanged">
                 <TextBlock>Физическое лицо</TextBlock>
                 <TextBlock>Юридическое лицо</TextBlock>
             </ComboBox>
             <Label x:Name="label" Content="Выберете тип лица" Margin="315,10,315,0" VerticalAlignment="Top" Foreground="#FF1B71B8" FontSize="16"/>
-            <DataGrid x:Name="dataGrid" Height="279" Margin="10,130,10,0" VerticalAlignment="Top" ColumnWidth="*"/>
             <Button x:Name="addSupplierButton" Content="Добавить поставщика" Margin="482,45,113,0" VerticalAlignment="Top" Click="addSupplierButtonClick"/>
 
         </Grid>

@@ -8,7 +8,6 @@ namespace DAL.Interfaces
 {
     public interface IChequeRepository
     {
-        List<Information_about_sales> informationAboutSalesByMonth(int informationAboutSalesId);
-
+        List<Information_about_sales> AnalysisSaLes(DateTime startDate, DateTime finishDate);
     }
 }

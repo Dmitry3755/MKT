@@ -55,11 +55,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DbDataOperation.cs" />
+    <Compile Include="Interfaces\IAnalysisSalesService.cs" />
     <Compile Include="Interfaces\IAuthorizationService.cs" />
     <Compile Include="Interfaces\IChequeCreate.cs" />
     <Compile Include="Interfaces\IChequeService.cs" />
     <Compile Include="Interfaces\IProductService.cs" />
     <Compile Include="Interfaces\ISupplierService.cs" />
+    <Compile Include="Methods\AnalysisSalesService.cs" />
     <Compile Include="Methods\AuthorizationService.cs" />
     <Compile Include="Methods\ChequeService.cs" />
     <Compile Include="Methods\ProductService.cs" />

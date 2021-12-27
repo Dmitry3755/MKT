@@ -30,7 +30,6 @@ namespace MKT
         List<CategoryModel> allCategory;
         List<ProductsModel> allProducts;
         public ObservableCollection<ProductsModel> selectedProducts { get; set; }
-        List<informationAboutSalesModel> list;
         public object[] mass = new object[1];
 
         public PurchaseWindow(IChequeService service, IChequeCreate cheque, IProductService productSer)

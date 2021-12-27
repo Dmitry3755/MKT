@@ -26,14 +26,12 @@ namespace DAL.Repository
             this.db = pcshopContext;
         }
 
-        public List<Information_about_sales> informationAboutSalesByMonth(int informationAboutSalesId)
+        public List<Information_about_sales> AnalysisSaLes(DateTime startDate, DateTime finishDate)
         {
-            var request = db.Information_about_sales
-             .Join(db.Products, ph => ph.product_FK, m => m.product_id, (ph, m) => ph)
-             .Where(i => i.Information_about_sales_id == informationAboutSalesId)
-             .Select(i => new Information_about_sales() { sales_count = i.sales_count, sales_price = i.sales_price, sales_date = i.sales_date, product_FK = i.product_FK })
-             .ToList();
-            return request;
+            var info = db.Information_about_sales
+                .Where(i => i.sales_date >= startDate.Date && i.sales_date <= finishDate.Date)
+                .ToList();
+            return info;
         }
     }
 }

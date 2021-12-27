@@ -37,16 +37,12 @@ namespace BLL.Methods
             string s4 = "Дата: ";
             string path = "../../../BLL/Cheque/";
             string[] AllFiles = Directory.GetFiles(path, ".", SearchOption.AllDirectories);
-            int count = AllFiles.Count();
+            int count = AllFiles.Count() +1;
 
             if (AllFiles.Count() != 0)
             {
-                string lastNameFile = AllFiles[count - 1];
-                lastNameFile = lastNameFile.Substring(path.Length, (lastNameFile.Length - path.Length));
-                int nameFile = Convert.ToInt32(lastNameFile.Substring(6, lastNameFile.Length - 10)) + 1;
-                lastNameFile = Convert.ToString(nameFile);
                 path = path.Insert(path.Length, "Cheque");
-                path = path.Insert(path.Length, lastNameFile);
+                path = path.Insert(path.Length, Convert.ToString(count));
                 path = path.Insert(path.Length, ".txt");
 
             }

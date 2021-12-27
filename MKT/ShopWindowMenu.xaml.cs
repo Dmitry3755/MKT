@@ -29,6 +29,8 @@ namespace MKT
         IChequeCreate chequeCreate;
         IProductService productService;
         ISupplierService supplierService;
+        IAnalysisSalesService analysisSalesService;
+
         int role = 0;
         public ShopWindowMenu(int role)
         {
@@ -38,6 +40,7 @@ namespace MKT
             chequeCreate = kernel.Get<IChequeCreate>();
             productService = kernel.Get<IProductService>();
             supplierService = kernel.Get<ISupplierService>();
+            analysisSalesService = kernel.Get<IAnalysisSalesService>();
 
             this.role = role;
 
@@ -88,6 +91,12 @@ namespace MKT
         {
             suppliersWindow suppliersWindow = new suppliersWindow(chequeService, supplierService);
             suppliersWindow.ShowDialog();
+        }
+
+        private void analysisSalesButtonClick(object sender, RoutedEventArgs e)
+        {
+            AnalysisSalesWindow analysisSalesWindow = new AnalysisSalesWindow(analysisSalesService, chequeService);
+            analysisSalesWindow.ShowDialog();
         }
     }
 }

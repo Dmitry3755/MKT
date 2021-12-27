@@ -76,6 +76,14 @@ namespace MKT
              })
              .Where(name => name.Product_name.ToLower().StartsWith(nameProductTextBox.Text.ToLower())).ToList();
             dataGrid.ItemsSource = products;
+
+            dataGrid.Columns[0].Header = "Id";
+            dataGrid.Columns[1].Header = "Название";
+            dataGrid.Columns[2].Header = "Характеристика";
+            dataGrid.Columns[3].Header = "Количество";
+            dataGrid.Columns[4].Header = "Цена";
+            dataGrid.Columns[5].Header = "Скидка";
+            dataGrid.Columns[6].Header = "Категория";
         }
 
         private void addProductButtonClick(object sender, RoutedEventArgs e)

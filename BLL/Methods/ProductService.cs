@@ -22,12 +22,13 @@ namespace BLL.Methods
         }
 
         Information_about_sales info = new Information_about_sales();
-        List<Information_about_sales> sales = new List<Information_about_sales>();
+        List<Information_about_sales> sales;
         Products products = new Products();
 
         public void infoAboutSales(object[,] chequeData)
         {
             DateTime salesDate = DateTime.Now;
+            sales = new List<Information_about_sales>();
             var sale = sales;
             sales = db.InformationAboutSales.GetList();
             int countId = sales.Count();

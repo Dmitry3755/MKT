@@ -67,6 +67,7 @@ namespace MKT
             else
             {
                 MessageBox.Show("Поля незаполненны");
+                return;
             }
         }
 

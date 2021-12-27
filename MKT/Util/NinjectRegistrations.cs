@@ -20,6 +20,7 @@ namespace MKT.Util
             Bind<IProductService>().To<ProductService>();
             Bind<IAuthorizationService>().To<AuthorizationService>();
             Bind<ISupplierService>().To<SupplierService>();
+            Bind<IAnalysisSalesService>().To<AnalysisSalesService>();
         }
     }
 }

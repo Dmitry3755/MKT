@@ -52,9 +52,13 @@ namespace MKT
                 dataGrid.ItemsSource = physicalPersonModels
                 .ToList();
                 dataGrid.Columns[0].Header = "Id";
+                dataGrid.Columns[0].Width = 110;
                 dataGrid.Columns[1].Header = "ФИО";
+                dataGrid.Columns[1].Width = 200;
                 dataGrid.Columns[2].Header = "Серия и номер паспорта";
+                dataGrid.Columns[2].Width = 300;
                 dataGrid.Columns[3].Header = "ИНН";
+                dataGrid.Columns[3].Width = 150;
             }
             else if (personComboBox.SelectedIndex == 1)
             {
@@ -62,9 +66,13 @@ namespace MKT
                 dataGrid.ItemsSource = legalPersonModels
                 .ToList();
                 dataGrid.Columns[0].Header = "Id";
+                dataGrid.Columns[0].Width = 110;
                 dataGrid.Columns[1].Header = "ИНН";
+                dataGrid.Columns[1].Width = 200;
                 dataGrid.Columns[2].Header = "КПП"; //Код причины постановки
+                dataGrid.Columns[2].Width = 300;
                 dataGrid.Columns[3].Header = "ОГРН"; //Основной государственный регистрационный номер
+                dataGrid.Columns[3].Width = 150;
             }
         }
 

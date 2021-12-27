@@ -40,7 +40,7 @@
             <Button x:Name="filterButton" Content="Поиск по категориям" Margin="50,94,50,116" Click="filterButtonClick"/>
             <Button x:Name="exitButton" Content="Выйти" Margin="50,206,50,4" Click="exitButtonClick"/>
             <Button x:Name="listProductsButton" Content="Товары на складе" Margin="122,66,123,0" VerticalAlignment="Top" Click="listProductsButtonClick"/>
-            <Button x:Name="analysisSalesButton" Content="Анализ продаж" Margin="151,122,151,0" VerticalAlignment="Top"/>
+            <Button x:Name="analysisSalesButton" Content="Анализ продаж" Margin="151,122,151,0" VerticalAlignment="Top" Click="analysisSalesButtonClick"/>
             <Button x:Name="suppliersButton" Content="Поставщики" Margin="171,150,172,0" VerticalAlignment="Top" Click="suppliersButtonClick"/>
         </Grid>
     </Viewbox>
